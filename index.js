@@ -33,6 +33,13 @@ function deleteUserById(userId){
     generateUsersListHTML(newUsers)
 }
 
+function editUserById(userId){
+let newUser = users.find(x => x.id === userId)
+   users = newUser
+
+    generateUsersListHTML(newUsers)
+}
+
 function generateUsersListHTML(userListProp){
     let usersList = document.querySelector('.users-list')
     usersList.innerHTML = ''
@@ -43,10 +50,12 @@ function generateUsersListHTML(userListProp){
 <h3>${item.name}</h3> 
 <p>${item.email}</p>
 <button onclick="deleteUserById(${item.id})">Delete</button>
+<button onclick="editUserById(${item.id})">Edit</button>
 `
         usersList.append(userBox)
     })
 }
+
 const addUser = document.getElementsByClassName('add-user')[0]
 const email = document.getElementsByClassName('email')[0]
 const userName = document.getElementsByClassName('userName')[0]
@@ -77,3 +86,4 @@ addUser.addEventListener('click', function() {
         }
     }
 });
+
